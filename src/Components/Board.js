@@ -14,11 +14,21 @@ const Board = ({ board }) => {
     return (x + y) % 2 === 1
   }
 
+  const getPosition = (i) => {
+    const { x, y } = getXYPosition(i)
+    const letter = ["a", "b", "c", "d", "e", "f", "g", "h"][x]
+    return `${letter}${y + 1}`
+  }
+
   return (
     <Root>
       {board.flat().map((piece, index) => (
         <SquareContainer key={index}>
-          <BoardSquare piece={piece} black={isBlack(index)} />
+          <BoardSquare
+            piece={piece}
+            black={isBlack(index)}
+            position={getPosition(index)}
+          />
         </SquareContainer>
       ))}
     </Root>

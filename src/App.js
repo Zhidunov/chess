@@ -7,6 +7,7 @@ const App = () => {
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
+  const [turn, setTurn] = useState()
 
   useEffect(() => {
     initGame()
@@ -14,6 +15,7 @@ const App = () => {
       setBoard(game.board)
       setIsGameOver(game.isGameOver)
       setResult(game.result)
+      setTurn(game.turn)
     })
 
     return () => subscribe.unsubscribe()
@@ -34,7 +36,7 @@ const App = () => {
         </GameOverText>
       )}
       <BoardContainer>
-        <Board board={board} />
+        <Board board={board} turn={turn} />
       </BoardContainer>
       {result && <VerticalText>{result}</VerticalText>}
     </Root>

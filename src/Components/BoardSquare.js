@@ -23,7 +23,7 @@ const BoardSquare = ({ piece, black, position }) => {
         : setPromotion(null)
     )
     return () => subscribe.unsubscribe()
-  }, [])
+  }, [position])
   return (
     <Root ref={drop}>
       <Square black={black}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { gameSubject } from "src/Components/Game"
+import { gameSubject, initGame } from "src/Components/Game"
 import Board from "src/Components/Board"
 import styled from "styled-components"
 
@@ -7,6 +7,7 @@ const App = () => {
   const [board, setBoard] = useState([])
 
   useEffect(() => {
+    initGame()
     const subscribe = gameSubject.subscribe((game) => setBoard(game.board))
 
     return () => subscribe.unsubscribe()
